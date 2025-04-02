@@ -1,1 +1,20 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+
+.freckle-face-regular {
+    font-family: "Freckle Face", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+
+div#perfil {
+    margin: auto;
+    
+}
+
+p#name {
+    font-family: "Freckle Face", system-ui;
+    text-align: center;
+}
