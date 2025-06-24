@@ -1,20 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-    <title>Meu portfólio</title>
+    <title>Portfólio de Estudante - Nicolas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <div id="perfil">
-            <img src="img/avatar-de-perfil.png" alt="Foto de perfil">
-        </div>
-        <p id="name">Eu sou Nicolas_</p>
+    <header>
+        <nav>
+            <div class="logo">[Seu Nome]</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre Mim</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
 
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Olá! Eu sou **[Seu Nome]**</h1>
+                <p>Estudante do Ensino Médio apaixonado(a) por **[Sua Área de Interesse]**.</p>
+                <a href="#projects" class="btn">Ver Meus Projetos</a>
+            </div>
+        </section>
 
+        <section id="about" class="about">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <p>Olá! Meu nome é **[Seu Nome Completo]** e sou estudante do **[Série, ex: 2º ano]** do Ensino Médio na **[Nome da Sua Escola]**. Tenho um grande interesse em **[Área de Interesse 1, ex: tecnologia]** e **[Área de Interesse 2, ex: ciências]**, e estou sempre buscando aprender coisas novas e desenvolver minhas habilidades.</p>
+                <p>Fora da escola, gosto de **[Seu Hobby 1]**, **[Seu Hobby 2]**, e **[Seu Hobby 3]**. Acredito que a combinação de estudos e atividades extracurriculares me ajuda a crescer e a explorar diferentes caminhos para o futuro.</p>
+            </div>
+        </section>
 
-    </div>
+        <section id="projects" class="projects">
+            <h2>Meus Projetos</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Projeto 1: **[Nome do Projeto]**</h3>
+                    <p>**[Breve descrição do projeto, ex: Um website interativo desenvolvido em HTML e CSS para o projeto de feira de ciências.]**</p>
+                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 2: **[Nome do Projeto]**</h3>
+                    <p>**[Breve descrição do projeto, ex: Apresentação sobre sustentabilidade utilizando ferramentas digitais.]**</p>
+                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 3: **[Nome do Projeto]**</h3>
+                    <p>**[Breve descrição do projeto, ex: Modelo 3D de um sistema solar feito em aula de artes.]**</p>
+                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
+                </div>
+                </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Minhas Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Habilidades Acadêmicas</h3>
+                    <ul>
+                        <li>**[Matemática]**</li>
+                        <li>**[Escrita Criativa]**</li>
+                        <li>**[Pesquisa e Análise]**</li>
+                        <li>**[Resolução de Problemas]**</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3>Habilidades Técnicas/Digitais</h3>
+                    <ul>
+                        <li>**[Pacote Office (Word, Excel, PowerPoint)]**</li>
+                        <li>**[Edição de Imagens (ex: Canva, GIMP)]**</li>
+                        <li>**[Programação Básica (ex: Python, Scratch)]**</li>
+                        <li>**[Pesquisa Online Eficaz]**</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3>Habilidades Interpessoais</h3>
+                    <ul>
+                        <li>**[Trabalho em Equipe]**</li>
+                        <li>**[Comunicação]**</li>
+                        <li>**[Liderança]**</li>
+                        <li>**[Adaptabilidade]**</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Entre em Contato</h2>
+            <p>Se você tiver alguma pergunta ou quiser saber mais sobre meus projetos, sinta-se à vontade para me contatar!</p>
+            <div class="contact-links">
+                <a href="mailto:seuemail@exemplo.com" class="contact-btn">Email</a>
+                <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-btn">LinkedIn (opcional)</a>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nicolas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Close nav when a link is clicked (for mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    navLinks.forEach((link) => {
+                        link.style.animation = ''; // Reset animation
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
