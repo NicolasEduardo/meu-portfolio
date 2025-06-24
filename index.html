@@ -539,4 +539,104 @@
                     <ul>
                         <li>**[Pacote Office (Word, Excel, PowerPoint)]**</li>
                         <li>**[Edição de Imagens (ex: Canva, GIMP)]**</li>
-                        <li>**
+                        <li>**[Programação Básica (ex: Python, Scratch)]**</li>
+                        <li>**[Pesquisa Online Eficaz]**</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3>Habilidades Interpessoais</h3>
+                    <ul>
+                        <li>**[Trabalho em Equipe]**</li>
+                        <li>**[Comunicação]**</li>
+                        <li>**[Liderança]**</li>
+                        <li>**[Adaptabilidade]**</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Entre em Contato</h2>
+            <p>Se você tiver alguma pergunta ou quiser saber mais sobre meus projetos, sinta-se à vontade para me contatar!</p>
+            <div class="contact-links">
+                <a href="mailto:seuemail@exemplo.com" class="contact-btn">Email</a>
+                <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-btn">LinkedIn (opcional)</a>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Seleciona o ícone do hambúrguer, os links de navegação e os itens da lista de navegação
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        // Adiciona um ouvinte de evento de clique ao ícone do hambúrguer
+        burger.addEventListener('click', () => {
+            // Alterna a classe 'nav-active' na lista de links de navegação para mostrar/esconder o menu
+            nav.classList.toggle('nav-active');
+
+            // Anima os links de navegação com um atraso para criar um efeito em cascata
+            navLinks.forEach((link, index) => {
+                // Se já houver uma animação, remove-a para permitir que ela seja reproduzida novamente
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    // Adiciona a animação 'navLinkFade' com um atraso progressivo
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Alterna a classe 'toggle' no ícone do hambúrguer para animá-lo (transformar em "X")
+            burger.classList.toggle('toggle');
+        });
+
+        // Fecha o menu de navegação quando um link é clicado (útil para dispositivos móveis)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Verifica se o menu está ativo
+                if (nav.classList.contains('nav-active')) {
+                    // Remove as classes que mantêm o menu e o ícone do hambúrguer ativos
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    // Reinicia a animação dos links para que eles possam ser animados novamente na próxima abertura
+                    navLinks.forEach((link) => {
+                        link.style.animation = '';
+                    });
+                }
+            });
+        });
+
+        // Animação de seções ao rolar
+        const sections = document.querySelectorAll('section'); // Seleciona todas as suas seções
+        const observerOptions = {
+            root: null, // O viewport (janela do navegador) é o elemento raiz
+            rootMargin: '0px',
+            threshold: 0.1 // 10% da seção precisa estar visível para disparar a animação
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Se a seção está visível na viewport, adiciona a classe 'visible'
+                    entry.target.classList.add('visible');
+                    // Opcional: Para animar apenas uma vez, você pode parar de observar depois que ela se torna visível
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Opcional: Remova 'visible' quando a seção sai da tela para que possa animar novamente ao rolar para cima
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observa cada seção para aplicar a animação quando ela entra na viewport
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
