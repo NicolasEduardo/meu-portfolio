@@ -6,19 +6,20 @@
     <title>Portfólio de Estudante - [Seu Nome]</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
+        /* Variáveis CSS para facilitar a manutenção de cores e tamanhos */
         :root {
-            --primary-color: #4CAF50; /* Green */
-            --secondary-color: #3f51b5; /* Indigo */
+            --primary-color: #4CAF50; /* Verde */
+            --secondary-color: #3f51b5; /* Índigo */
             --text-color: #333;
             --light-text-color: #fff;
             --bg-light: #f4f4f4;
             --bg-dark: #333;
             --card-bg: #ffffff;
             --border-radius: 8px;
-            --transition-speed: 0.3s ease;
+            --transition-speed: 0.3s ease; /* Velocidade padrão para transições */
         }
 
+        /* Reset básico para todos os elementos */
         * {
             margin: 0;
             padding: 0;
@@ -30,9 +31,10 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-light);
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Habilita rolagem suave ao clicar em links internos */
         }
 
+        /* Estilo para links */
         a {
             text-decoration: none;
             color: var(--primary-color);
@@ -43,10 +45,12 @@
             color: var(--secondary-color);
         }
 
+        /* Remove marcadores de lista */
         ul {
             list-style: none;
         }
 
+        /* Estilo para títulos */
         h1, h2, h3 {
             color: var(--text-color);
             margin-bottom: 1rem;
@@ -60,6 +64,7 @@
             padding-bottom: 10px;
         }
 
+        /* Linha decorativa abaixo dos títulos H2 */
         h2::after {
             content: '';
             position: absolute;
@@ -72,6 +77,7 @@
             border-radius: 2px;
         }
 
+        /* Estilo para botões gerais */
         .btn {
             display: inline-block;
             background: var(--primary-color);
@@ -85,33 +91,33 @@
 
         .btn:hover {
             background: var(--secondary-color);
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* Efeito de "levantar" ao passar o mouse */
         }
 
+        /* Estilo base para todas as seções */
         section {
             padding: 4rem 5%;
             margin: 0 auto;
             max-width: 1200px;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(20px); /* Initial state for animation */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            opacity: 0; /* Começa invisível para a animação de entrada */
+            transform: translateY(20px); /* Começa ligeiramente abaixo para a animação */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição suave para visibilidade */
         }
 
-        /* Section visibility animation (triggered by JS if elements enter viewport, or just apply it for initial load) */
-        section:target, section.visible { /* Using :target for basic scroll animation if JS isn't used */
+        /* Animação para quando a seção é visível (usado com JS ou :target) */
+        section:target, section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-
-        /* Header and Navigation */
+        /* Header e Navegação */
         header {
             background: var(--bg-dark);
             color: var(--light-text-color);
             padding: 1rem 5%;
-            position: sticky;
+            position: sticky; /* Fixa o cabeçalho no topo ao rolar */
             top: 0;
-            z-index: 1000;
+            z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -143,6 +149,7 @@
             padding: 5px 0;
         }
 
+        /* Animação de linha inferior nos links da navegação */
         .nav-links li a::after {
             content: '';
             position: absolute;
@@ -158,9 +165,9 @@
             width: 100%;
         }
 
-        /* Burger Menu */
+        /* Menu Hamburguer (para mobile) */
         .burger {
-            display: none;
+            display: none; /* Escondido por padrão, visível apenas em telas menores */
             cursor: pointer;
             flex-direction: column;
             gap: 5px;
@@ -173,8 +180,9 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
+        /* Seção Hero (primeira tela) */
         .hero {
+            /* Imagem de fundo com um overlay escuro */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/random/1600x900/?coding,education,student') no-repeat center center/cover;
             color: var(--light-text-color);
             min-height: 80vh;
@@ -183,7 +191,7 @@
             align-items: center;
             text-align: center;
             padding: 0 5%;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 1s ease-out; /* Animação de fade-in na carga da página */
         }
 
         .hero-content {
@@ -195,8 +203,8 @@
             margin-bottom: 1rem;
             font-weight: 700;
             color: var(--light-text-color);
-            animation: slideInUp 1s ease-out 0.5s forwards;
-            opacity: 0;
+            animation: slideInUp 1s ease-out 0.5s forwards; /* Animação de slide e fade-in para o título */
+            opacity: 0; /* Inicia invisível para a animação */
         }
 
         .hero-content p {
@@ -204,16 +212,16 @@
             margin-bottom: 2rem;
             font-weight: 300;
             color: var(--light-text-color);
-            animation: slideInUp 1s ease-out 0.7s forwards;
+            animation: slideInUp 1s ease-out 0.7s forwards; /* Animação para o parágrafo */
             opacity: 0;
         }
 
         .hero-content .btn {
-            animation: slideInUp 1s ease-out 0.9s forwards;
+            animation: slideInUp 1s ease-out 0.9s forwards; /* Animação para o botão */
             opacity: 0;
         }
 
-        /* About Section */
+        /* Seção "Sobre Mim" */
         .about {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -228,14 +236,14 @@
             text-align: justify;
         }
 
-        /* Projects Section */
+        /* Seção "Projetos" */
         .projects {
             background-color: var(--bg-light);
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsivo de grid */
             gap: 2rem;
         }
 
@@ -248,7 +256,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px); /* Efeito de "levantar" no card */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
@@ -269,7 +277,7 @@
             margin-top: 10px;
         }
 
-        /* Skills Section */
+        /* Seção "Habilidades" */
         .skills {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -291,7 +299,7 @@
         }
 
         .skill-item:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* Efeito de "levantar" no item de habilidade */
         }
 
         .skill-item h3 {
@@ -301,7 +309,7 @@
         }
 
         .skill-item ul {
-            list-style: disc;
+            list-style: disc; /* Marcadores de lista para as habilidades */
             padding-left: 20px;
         }
 
@@ -310,7 +318,7 @@
             font-size: 1rem;
         }
 
-        /* Contact Section */
+        /* Seção "Contato" */
         .contact {
             background-color: var(--bg-light);
             text-align: center;
@@ -328,7 +336,7 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
         }
 
         .contact-btn {
@@ -345,7 +353,7 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* Rodapé */
         footer {
             background: var(--bg-dark);
             color: var(--light-text-color);
@@ -354,7 +362,7 @@
             font-size: 0.9rem;
         }
 
-        /* Animations */
+        /* Definição das Animações Keyframes */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -382,29 +390,29 @@
             }
         }
 
-        /* Responsive Design */
+        /* Design Responsivo (Media Queries para telas menores) */
         @media screen and (max-width: 768px) {
             body {
-                overflow-x: hidden;
+                overflow-x: hidden; /* Previne rolagem horizontal indesejada */
             }
 
             .nav-links {
                 position: absolute;
                 right: 0;
-                height: 92vh;
-                top: 8vh;
+                height: 92vh; /* Quase a altura total da tela */
+                top: 8vh; /* Abaixo do cabeçalho */
                 background-color: var(--secondary-color);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 width: 60%;
-                transform: translateX(100%);
+                transform: translateX(100%); /* Esconde a navegação para a direita */
                 transition: transform 0.5s ease-in;
                 z-index: 999;
             }
 
             .nav-links li {
-                opacity: 0;
+                opacity: 0; /* Inicia links invisíveis para animação em cascata */
                 margin: 1.5rem 0;
             }
 
@@ -413,13 +421,14 @@
             }
 
             .burger {
-                display: flex;
+                display: flex; /* Mostra o ícone do hambúrguer */
             }
 
             .nav-active {
-                transform: translateX(0%);
+                transform: translateX(0%); /* Mostra a navegação ao clicar no hambúrguer */
             }
 
+            /* Animação do ícone do hambúrguer para um "X" */
             .burger.toggle .line1 {
                 transform: rotate(-45deg) translate(-5px, 6px);
             }
@@ -432,6 +441,7 @@
                 transform: rotate(45deg) translate(-5px, -6px);
             }
 
+            /* Ajustes de fonte para telas menores */
             .hero-content h1 {
                 font-size: 3rem;
             }
@@ -445,17 +455,13 @@
             }
 
             section {
-                padding: 3rem 5%;
+                padding: 3rem 5%; /* Reduz o padding nas seções */
             }
 
+            /* Colunas dos grids se tornam uma única coluna em telas menores */
             .project-grid, .skills-grid {
-                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+                grid-template-columns: 1fr;
             }
-        }
-
-        /* Smooth Scroll (optional, can be done with JS as well) */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -533,70 +539,4 @@
                     <ul>
                         <li>**[Pacote Office (Word, Excel, PowerPoint)]**</li>
                         <li>**[Edição de Imagens (ex: Canva, GIMP)]**</li>
-                        <li>**[Programação Básica (ex: Python, Scratch)]**</li>
-                        <li>**[Pesquisa Online Eficaz]**</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h3>Habilidades Interpessoais</h3>
-                    <ul>
-                        <li>**[Trabalho em Equipe]**</li>
-                        <li>**[Comunicação]**</li>
-                        <li>**[Liderança]**</li>
-                        <li>**[Adaptabilidade]**</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <h2>Entre em Contato</h2>
-            <p>Se você tiver alguma pergunta ou quiser saber mais sobre meus projetos, sinta-se à vontade para me contatar!</p>
-            <div class="contact-links">
-                <a href="mailto:seuemail@exemplo.com" class="contact-btn">Email</a>
-                <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-btn">LinkedIn (opcional)</a>
-                </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
-
-        burger.addEventListener('click', () => {
-            // Toggle Nav
-            nav.classList.toggle('nav-active');
-
-            // Animate Links
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-
-            // Burger Animation
-            burger.classList.toggle('toggle');
-        });
-
-        // Close nav when a link is clicked (for mobile)
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (nav.classList.contains('nav-active')) {
-                    nav.classList.remove('nav-active');
-                    burger.classList.remove('toggle');
-                    navLinks.forEach((link) => {
-                        link.style.animation = ''; // Reset animation
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                        <li>**
