@@ -249,394 +249,158 @@
 
         .project-card {
             background-color: var(--card-bg);
+            border-radius: var(--border-radius);
             padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px); /* Efeito de "levantar" no card */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .project-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.8rem;
-            font-size: 1.6rem;
-        }
-
-        .project-card p {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .project-link {
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* Seção "Habilidades" */
-        .skills {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-item {
-            background-color: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform var(--transition-speed);
         }
 
-        .skill-item:hover {
-            transform: translateY(-3px); /* Efeito de "levantar" no item de habilidade */
+        .project-card:hover {
+            transform: translateY(-5px);
         }
 
-        .skill-item h3 {
-            color: var(--primary-color);
+        .project-card img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
             margin-bottom: 1rem;
-            font-size: 1.4rem;
         }
 
-        .skill-item ul {
-            list-style: disc; /* Marcadores de lista para as habilidades */
-            padding-left: 20px;
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .skill-item li {
-            margin-bottom: 0.5rem;
+        .project-card p {
             font-size: 1rem;
+            color: #666;
         }
 
-        /* Seção "Contato" */
-        .contact {
-            background-color: var(--bg-light);
-            text-align: center;
-        }
-
-        .contact p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
-        }
-
-        .contact-btn {
-            background: var(--secondary-color);
-            color: var(--light-text-color);
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background var(--transition-speed), transform var(--transition-speed);
-        }
-
-        .contact-btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Rodapé */
-        footer {
-            background: var(--bg-dark);
-            color: var(--light-text-color);
-            text-align: center;
-            padding: 1.5rem 5%;
-            font-size: 0.9rem;
-        }
-
-        /* Definição das Animações Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes navLinkFade {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Design Responsivo (Media Queries para telas menores) */
+        /* Media Query para dispositivos móveis */
         @media screen and (max-width: 768px) {
-            body {
-                overflow-x: hidden; /* Previne rolagem horizontal indesejada */
+            .burger {
+                display: flex;
             }
 
             .nav-links {
-                position: absolute;
-                right: 0;
-                height: 92vh; /* Quase a altura total da tela */
-                top: 8vh; /* Abaixo do cabeçalho */
-                background-color: var(--secondary-color);
-                display: flex;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background-color: var(--bg-dark);
                 flex-direction: column;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
                 align-items: center;
-                width: 60%;
-                transform: translateX(100%); /* Esconde a navegação para a direita */
-                transition: transform 0.5s ease-in;
-                z-index: 999;
-            }
-
-            .nav-links li {
-                opacity: 0; /* Inicia links invisíveis para animação em cascata */
-                margin: 1.5rem 0;
+                gap: 3rem;
+                transition: right 0.3s ease-in-out;
             }
 
             .nav-links li a {
-                font-size: 1.3rem;
+                font-size: 2rem;
+                color: var(--light-text-color);
             }
 
-            .burger {
-                display: flex; /* Mostra o ícone do hambúrguer */
+            .nav-links.open {
+                right: 0;
             }
 
-            .nav-active {
-                transform: translateX(0%); /* Mostra a navegação ao clicar no hambúrguer */
-            }
-
-            /* Animação do ícone do hambúrguer para um "X" */
-            .burger.toggle .line1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .burger.toggle .line2 {
-                opacity: 0;
-            }
-
-            .burger.toggle .line3 {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            /* Ajustes de fonte para telas menores */
-            .hero-content h1 {
+            .hero h1 {
                 font-size: 3rem;
             }
+        }
 
-            .hero-content p {
-                font-size: 1.2rem;
-            }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
-            h2 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 3rem 5%; /* Reduz o padding nas seções */
-            }
-
-            /* Colunas dos grids se tornam uma única coluna em telas menores */
-            .project-grid, .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        @keyframes slideInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
-            <div class="logo">[Seu Nome]</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Início</a></li>
+            <div class="logo">Meu Portfólio</div>
+            <div class="burger" id="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">Sobre Mim</a></li>
                 <li><a href="#projects">Projetos</a></li>
-                <li><a href="#skills">Habilidades</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <h1>Olá! Eu sou **[Seu Nome]**</h1>
-                <p>Estudante do Ensino Médio apaixonado(a) por **[Sua Área de Interesse]**.</p>
-                <a href="#projects" class="btn">Ver Meus Projetos</a>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo ao meu portfólio!</h1>
+            <p>Sou [Seu Nome], estudante apaixonado por desenvolvimento web. Explore meus projetos e conheça mais sobre mim.</p>
+            <a href="#projects" class="btn">Veja meus Projetos</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Sobre Mim</h2>
+        <div class="about-content">
+            <p>Olá! Eu sou [Seu Nome], um estudante de desenvolvimento web. Adoro aprender novas tecnologias e aplicar meu conhecimento para criar soluções incríveis.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Meus Projetos</h2>
+        <div class="project-grid">
+            <!-- Exemplos de Projetos -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300" alt="Projeto 1">
+                <h3>Projeto 1</h3>
+                <p>Descrição breve do projeto, tecnologias usadas, e outros detalhes interessantes.</p>
             </div>
-        </section>
-
-        <section id="about" class="about">
-            <h2>Sobre Mim</h2>
-            <div class="about-content">
-                <p>Olá! Meu nome é **[Seu Nome Completo]** e sou estudante do **[Série, ex: 2º ano]** do Ensino Médio na **[Nome da Sua Escola]**. Tenho um grande interesse em **[Área de Interesse 1, ex: tecnologia]** e **[Área de Interesse 2, ex: ciências]**, e estou sempre buscando aprender coisas novas e desenvolver minhas habilidades.</p>
-                <p>Fora da escola, gosto de **[Seu Hobby 1]**, **[Seu Hobby 2]**, e **[Seu Hobby 3]**. Acredito que a combinação de estudos e atividades extracurriculares me ajuda a crescer e a explorar diferentes caminhos para o futuro.</p>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300" alt="Projeto 2">
+                <h3>Projeto 2</h3>
+                <p>Descrição breve do projeto, tecnologias usadas, e outros detalhes interessantes.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="projects">
-            <h2>Meus Projetos</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Projeto 1: **[Nome do Projeto]**</h3>
-                    <p>**[Breve descrição do projeto, ex: Um website interativo desenvolvido em HTML e CSS para o projeto de feira de ciências.]**</p>
-                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
-                </div>
-                <div class="project-card">
-                    <h3>Projeto 2: **[Nome do Projeto]**</h3>
-                    <p>**[Breve descrição do projeto, ex: Apresentação sobre sustentabilidade utilizando ferramentas digitais.]**</p>
-                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
-                </div>
-                <div class="project-card">
-                    <h3>Projeto 3: **[Nome do Projeto]**</h3>
-                    <p>**[Breve descrição do projeto, ex: Modelo 3D de um sistema solar feito em aula de artes.]**</p>
-                    <a href="#" target="_blank" class="project-link">Ver Projeto (se houver link)</a>
-                </div>
-                </div>
-        </section>
-
-        <section id="skills" class="skills">
-            <h2>Minhas Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h3>Habilidades Acadêmicas</h3>
-                    <ul>
-                        <li>**[Matemática]**</li>
-                        <li>**[Escrita Criativa]**</li>
-                        <li>**[Pesquisa e Análise]**</li>
-                        <li>**[Resolução de Problemas]**</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h3>Habilidades Técnicas/Digitais</h3>
-                    <ul>
-                        <li>**[Pacote Office (Word, Excel, PowerPoint)]**</li>
-                        <li>**[Edição de Imagens (ex: Canva, GIMP)]**</li>
-                        <li>**[Programação Básica (ex: Python, Scratch)]**</li>
-                        <li>**[Pesquisa Online Eficaz]**</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h3>Habilidades Interpessoais</h3>
-                    <ul>
-                        <li>**[Trabalho em Equipe]**</li>
-                        <li>**[Comunicação]**</li>
-                        <li>**[Liderança]**</li>
-                        <li>**[Adaptabilidade]**</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <h2>Entre em Contato</h2>
-            <p>Se você tiver alguma pergunta ou quiser saber mais sobre meus projetos, sinta-se à vontade para me contatar!</p>
-            <div class="contact-links">
-                <a href="mailto:seuemail@exemplo.com" class="contact-btn">Email</a>
-                <a href="https://linkedin.com/in/seuperfil" target="_blank" class="contact-btn">LinkedIn (opcional)</a>
-                </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
-    </footer>
+    <section id="contact" class="contact">
+        <h2>Contato</h2>
+        <p>Você pode me encontrar através do meu e-mail ou redes sociais.</p>
+    </section>
 
     <script>
-        // Seleciona o ícone do hambúrguer, os links de navegação e os itens da lista de navegação
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
+        // Função para alternar a visibilidade do menu no mobile
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('nav-links');
 
-        // Adiciona um ouvinte de evento de clique ao ícone do hambúrguer
         burger.addEventListener('click', () => {
-            // Alterna a classe 'nav-active' na lista de links de navegação para mostrar/esconder o menu
-            nav.classList.toggle('nav-active');
-
-            // Anima os links de navegação com um atraso para criar um efeito em cascata
-            navLinks.forEach((link, index) => {
-                // Se já houver uma animação, remove-a para permitir que ela seja reproduzida novamente
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    // Adiciona a animação 'navLinkFade' com um atraso progressivo
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-
-            // Alterna a classe 'toggle' no ícone do hambúrguer para animá-lo (transformar em "X")
+            navLinks.classList.toggle('open');
             burger.classList.toggle('toggle');
         });
 
-        // Fecha o menu de navegação quando um link é clicado (útil para dispositivos móveis)
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Verifica se o menu está ativo
-                if (nav.classList.contains('nav-active')) {
-                    // Remove as classes que mantêm o menu e o ícone do hambúrguer ativos
-                    nav.classList.remove('nav-active');
-                    burger.classList.remove('toggle');
-                    // Reinicia a animação dos links para que eles possam ser animados novamente na próxima abertura
-                    navLinks.forEach((link) => {
-                        link.style.animation = '';
-                    });
+        // Função para adicionar animação nas seções quando estiverem visíveis
+        const sections = document.querySelectorAll('section');
+
+        const checkVisibility = () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    section.classList.add('visible');
                 }
             });
-        });
-
-        // Animação de seções ao rolar
-        const sections = document.querySelectorAll('section'); // Seleciona todas as suas seções
-        const observerOptions = {
-            root: null, // O viewport (janela do navegador) é o elemento raiz
-            rootMargin: '0px',
-            threshold: 0.1 // 10% da seção precisa estar visível para disparar a animação
         };
 
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Se a seção está visível na viewport, adiciona a classe 'visible'
-                    entry.target.classList.add('visible');
-                    // Opcional: Para animar apenas uma vez, você pode parar de observar depois que ela se torna visível
-                    // observer.unobserve(entry.target);
-                } else {
-                    // Opcional: Remova 'visible' quando a seção sai da tela para que possa animar novamente ao rolar para cima
-                    // entry.target.classList.remove('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observa cada seção para aplicar a animação quando ela entra na viewport
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
     </script>
+
 </body>
 </html>
